@@ -11,6 +11,10 @@ public class Cart {
         this.items = new HashMap<>();
     }
 
+    public Cart(Map<Integer, CartItem> items) {
+        this.items = items != null ? items : new HashMap<>();
+    }
+
     public Map<Integer, CartItem> getItems() {
         return items;
     }
@@ -35,9 +39,9 @@ public class Cart {
     }
 
     public BigDecimal getTotalPrice() {
-    return items.values().stream()
-        .map(CartItem::getTotalPrice) // Lấy giá từng item (BigDecimal)
-        .reduce(BigDecimal.ZERO, BigDecimal::add); // Cộng tổng giá
+        return items.values().stream()
+                .map(CartItem::getTotalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public boolean isEmpty() {

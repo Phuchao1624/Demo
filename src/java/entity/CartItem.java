@@ -29,6 +29,5 @@ public class CartItem {
 
     public BigDecimal getTotalPrice() {
         return game.getPrice().multiply(BigDecimal.valueOf(quantity));
-
     }
 }

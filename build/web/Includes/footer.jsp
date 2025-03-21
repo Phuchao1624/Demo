@@ -15,7 +15,7 @@
             <div class="col-md-3">
                 <h5 class="text-warning border-bottom border-warning pb-2">About Us</h5>
                 <p class="text-muted">
-                    Chúng tôi mang đến cho bạn những thông tin mới nhất về thế giới game. Cập nhật, chia sẻ, review những tựa game hot . Cùng với đó là những hướng dẫn chi tiết bạn cần.
+                    Chúng tôi mang đến cho bạn những thông tin mới nhất về thế giới game. Cập nhật, chia sẻ, review những tựa game hot. Cùng với đó là những hướng dẫn chi tiết bạn cần.
                 </p>
                 <a href="#" class="btn btn-sm btn-warning">Xem thêm</a>
             </div>
