@@ -7,6 +7,9 @@
 <!-- Font Awesome CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <!-- Bootstrap 4.6 JS + jQuery + Popper.js -->
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
@@ -18,10 +21,10 @@
 <style>
     /* Modern Navbar Styling */
     .navbar {
-        background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         padding: 1rem 2rem;
-        border-bottom: 2px solid #ffca28;
+        border-bottom: 2px solid #00eaff;
         transition: transform 0.3s ease; /* Smooth transition for hiding/showing */
     }
 
@@ -30,8 +33,10 @@
     }
 
     .navbar-brand {
+        font-family: 'Orbitron', sans-serif;
         font-size: 1.8rem;
-        font-family: 'Arial', sans-serif;
+        color: #00eaff !important;
+        text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
         letter-spacing: 1px;
         transition: transform 0.3s ease;
     }
@@ -42,114 +47,137 @@
 
     .nav-link {
         color: #ffffff !important;
+        font-family: 'Roboto', sans-serif;
         font-weight: 500;
         padding: 0.5rem 1rem;
         transition: color 0.3s ease, background 0.3s ease;
     }
 
     .nav-link:hover, .nav-link:focus {
-        color: #ffca28 !important;
-        background: rgba(255, 202, 40, 0.1);
+        color: #00eaff !important;
+        background: rgba(0, 234, 255, 0.1);
         border-radius: 5px;
         outline: none;
     }
 
     .nav-link:focus {
-        box-shadow: 0 0 0 2px rgba(255, 202, 40, 0.5);
+        box-shadow: 0 0 0 2px rgba(0, 234, 255, 0.5);
     }
 
     /* Search Bar Styling */
+    .form-inline {
+        display: flex;
+        align-items: center;
+    }
+
     .form-control {
-        border: none;
+        background: rgba(20, 20, 40, 0.85);
+        border: 2px solid #00eaff;
+        color: #fff;
         border-radius: 25px 0 0 25px;
-        background: #ffffff;
         padding: 0.6rem 1.2rem;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
         transition: all 0.3s ease;
     }
 
     .form-control:focus {
-        box-shadow: 0 0 8px rgba(255, 202, 40, 0.5);
-        border-color: #ffca28;
+        border-color: #ff00ff;
+        box-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+        background: rgba(20, 20, 40, 1);
+        transform: scale(1.02);
     }
 
     .btn-outline-warning {
+        background: linear-gradient(90deg, #ff00ff, #00eaff);
+        border: none;
         border-radius: 0 25px 25px 0;
-        border: 2px solid #ffca28;
-        color: #ffca28;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1rem;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
     }
 
     .btn-outline-warning:hover, .btn-outline-warning:focus {
-        background: #ffca28;
-        color: #1a1a1a;
-        box-shadow: 0 4px 12px rgba(255, 202, 40, 0.4);
+        background: linear-gradient(90deg, #00eaff, #ff00ff);
+        box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+        transform: translateY(-2px);
         outline: none;
     }
 
     /* Dropdown Styling */
     .dropdown-menu {
-        background: #2d2d2d;
-        border: none;
+        background: rgba(40, 40, 70, 0.95);
+        border: 1px solid rgba(0, 255, 255, 0.4);
         border-radius: 8px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .dropdown-item {
         color: #ffffff;
+        font-family: 'Roboto', sans-serif;
         padding: 0.5rem 1.5rem;
         transition: background 0.3s ease, color 0.3s ease;
     }
 
     .dropdown-item:hover, .dropdown-item:focus {
-        background: #ffca28;
-        color: #1a1a1a;
+        background: #00eaff;
+        color: #1a1a2e;
         outline: none;
     }
 
     .dropdown-divider {
-        border-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(0, 255, 255, 0.2);
     }
 
     /* Login/Register Buttons */
     .btn-outline-light {
-        border: 2px solid #ffffff;
-        color: #ffffff;
+        border: 2px solid #00eaff;
+        color: #00eaff;
         border-radius: 25px;
         padding: 0.5rem 1.5rem;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
         transition: all 0.3s ease;
     }
 
     .btn-outline-light:hover, .btn-outline-light:focus {
-        background: #ffffff;
-        color: #1a1a1a;
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        background: #00eaff;
+        color: #1a1a2e;
+        box-shadow: 0 4px 12px rgba(0, 234, 255, 0.5);
     }
 
     .btn-warning {
-        background: #ffca28;
+        background: linear-gradient(90deg, #ff00ff, #00eaff);
         border: none;
-        color: #1a1a1a;
+        color: #fff;
         border-radius: 25px;
         padding: 0.5rem 1.5rem;
+        font-family: 'Orbitron', sans-serif;
         font-weight: 600;
+        text-transform: uppercase;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
     }
 
     .btn-warning:hover, .btn-warning:focus {
-        background: #ffb300;
-        box-shadow: 0 4px 12px rgba(255, 202, 40, 0.5);
-        color: #1a1a1a;
+        background: linear-gradient(90deg, #00eaff, #ff00ff);
+        box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+        transform: translateY(-2px);
+        color: #fff;
     }
 
     /* Mobile Toggle */
     .navbar-toggler {
-        border: 2px solid #ffca28;
+        border: 2px solid #00eaff;
     }
 
     .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 202, 40, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 234, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
     /* Mobile Responsiveness */
@@ -192,6 +220,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="wishlist.jsp"><i class="fas fa-heart"></i> Game yêu thích</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="purchaseHistory.jsp"><i class="fas fa-history"></i> Lịch sử mua</a>
+                    </li>
                 </c:if>
                 <c:if test="${acc.role == 'admin'}">
                     <li class="nav-item">
@@ -205,7 +236,7 @@
 
             <!-- Search bar -->
             <form class="form-inline my-2 my-lg-0" action="search.jsp" method="GET">
-                <input class="form-control mr-sm-2" type="search " name="query" placeholder="Tìm kiếm game..." aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Tìm kiếm game..." aria-label="Search">
                 <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" aria-label="Search">
                     <i class="fas fa-search"></i>
                 </button>

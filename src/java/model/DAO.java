@@ -6,6 +6,7 @@ import entity.Game;
 import entity.Order;
 import entity.Category;
 import entity.OrderDetail;
+import entity.Transaction; // Thêm import cho Transaction
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
@@ -45,32 +46,59 @@ public class DAO implements DatabaseInfo {
         return false;
     }
 
-    public static boolean registerUser(String username, String email, String password) throws UnsupportedEncodingException {
+    public static String registerUser(String username, String email, String password) throws UnsupportedEncodingException {
         Connection conn = null;
-        PreparedStatement stmt = null;
-        boolean success = false;
+        PreparedStatement checkUsernameStmt = null;
+        PreparedStatement checkEmailStmt = null;
+        PreparedStatement insertStmt = null;
 
         try {
             conn = getConnect();
+            if (conn == null) {
+                return "failure"; // Connection failed
+            }
+
+            // Check if username already exists
+            String checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE username = ?";
+            checkUsernameStmt = conn.prepareStatement(checkUsernameQuery);
+            checkUsernameStmt.setString(1, username);
+            ResultSet usernameRs = checkUsernameStmt.executeQuery();
+            if (usernameRs.next() && usernameRs.getInt(1) > 0) {
+                return "username_exists"; // Username already exists
+            }
+
+            // Check if email already exists
+            String checkEmailQuery = "SELECT COUNT(*) FROM Users WHERE email = ?";
+            checkEmailStmt = conn.prepareStatement(checkEmailQuery);
+            checkEmailStmt.setString(1, email);
+            ResultSet emailRs = checkEmailStmt.executeQuery();
+            if (emailRs.next() && emailRs.getInt(1) > 0) {
+                return "email_exists"; // Email already exists
+            }
+
+            // If no duplicates, proceed with registration
             String hashedPassword = hashPassword(password);
-            String sql = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, email);
-            stmt.setString(3, hashedPassword);
-            int rows = stmt.executeUpdate();
-            success = (rows > 0);
+            String insertSql = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
+            insertStmt = conn.prepareStatement(insertSql);
+            insertStmt.setString(1, username);
+            insertStmt.setString(2, email);
+            insertStmt.setString(3, hashedPassword);
+            int rows = insertStmt.executeUpdate();
+            return rows > 0 ? "success" : "failure";
+
         } catch (SQLException e) {
             e.printStackTrace();
+            return "failure";
         } finally {
             try {
-                if (stmt != null) stmt.close();
+                if (checkUsernameStmt != null) checkUsernameStmt.close();
+                if (checkEmailStmt != null) checkEmailStmt.close();
+                if (insertStmt != null) insertStmt.close();
                 if (conn != null) conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return success;
     }
 
     public static String hashPassword(String password) throws UnsupportedEncodingException {
@@ -585,5 +613,47 @@ public class DAO implements DatabaseInfo {
             System.out.println("❌ Lỗi cập nhật số lượng tồn kho: " + e.getMessage());
             return false;
         }
+    }
+
+    // Thêm phương thức addTransaction
+    public static boolean addTransaction(Transaction transaction) {
+        String sql = "INSERT INTO Transactions (user_id, card_number, transaction_date, amount, transaction_type) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = getConnect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, transaction.getUserId());
+            stmt.setString(2, transaction.getCardNumber());
+            stmt.setTimestamp(3, transaction.getTransactionDate());
+            stmt.setBigDecimal(4, transaction.getAmount());
+            stmt.setString(5, transaction.getTransactionType());
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("❌ Lỗi thêm giao dịch: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // Thêm phương thức getAllTransactions
+    public static List<Transaction> getAllTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        String sql = "SELECT * FROM Transactions";
+        try (Connection conn = getConnect(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Transaction transaction = new Transaction();
+                transaction.setId(rs.getInt("id"));
+                transaction.setUserId(rs.getInt("user_id"));
+                transaction.setCardNumber(rs.getString("card_number"));
+                transaction.setTransactionDate(rs.getTimestamp("transaction_date"));
+                transaction.setAmount(rs.getBigDecimal("amount"));
+                transaction.setTransactionType(rs.getString("transaction_type"));
+                transactions.add(transaction);
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Lỗi lấy danh sách giao dịch: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

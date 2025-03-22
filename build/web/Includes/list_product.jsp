@@ -7,217 +7,83 @@
     request.setAttribute("games", games);
 %>
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game List - Game Store</title>
 
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<style>
-    body {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        color: #e0e0e0;
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    .container {
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/list_product.css">
+</head>
+<body>
+    <!-- List Product Section -->
+    <section id="gameList" class="container mt-4">
+        <h2>🎮 Danh Sách Game</h2>
+        <div class="row mt-4">
+            <c:choose>
+                <c:when test="${not empty games}">
+                    <c:forEach var="game" items="${games}">
+                        <div class="col-md-4 mb-4">
+                            <div class="card game-card">
+                                <img src="${game.imageUrl}" class="card-img-top game-img" alt="${game.title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${game.title}</h5>
+                                    <p class="card-text">${game.genre} | ${game.platform}</p>
+                                    <p class="card-text"><i class="fas fa-calendar-alt me-1"></i> ${game.releaseDate}</p>
+                                    <p class="card-text"><i class="fas fa-box me-1"></i> Còn: ${game.stock} bản</p>
+                                    <p class="card-text price"><i class="fas fa-coins me-1"></i> ${game.price} đ</p>
 
-    h2 {
-        font-family: 'Orbitron', sans-serif;
-        color: #00eaff;
-        text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 2rem;
-        letter-spacing: 2px;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-        from {
-            text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
-        }
-        to {
-            text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
-        }
-    }
-
-    .game-card {
-        background: rgba(40, 40, 70, 0.95);
-        border: 1px solid rgba(0, 255, 255, 0.4);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-    }
-
-    .game-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3);
-    }
-
-    .game-img {
-        height: 250px;
-        object-fit: cover;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        transition: transform 0.3s ease;
-    }
-
-    .game-card:hover .game-img {
-        transform: scale(1.1);
-    }
-
-    .card-body {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .card-title {
-        font-family: 'Orbitron', sans-serif;
-        color: #00eaff;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
-    }
-
-    .card-text {
-        font-size: 0.95rem;
-        color: #b0b0b0;
-        margin-bottom: 8px;
-    }
-
-    .card-text.price {
-        color: #ffca28;
-        font-weight: bold;
-        font-size: 1.2rem;
-        text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
-    }
-
-    .btn-custom {
-        width: 100%;
-        background: linear-gradient(90deg, #ff00ff, #00eaff);
-        border: none;
-        border-radius: 25px;
-        padding: 0.75rem;
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1rem;
-        text-transform: uppercase;
-        color: #fff;
-        letter-spacing: 1.5px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
-        margin-bottom: 10px;
-    }
-
-    .btn-custom:hover {
-        background: linear-gradient(90deg, #00eaff, #ff00ff);
-        box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
-        transform: translateY(-3px);
-    }
-
-    .btn-add-to-cart {
-        width: 100%;
-        background: linear-gradient(90deg, #ffca28, #ff6200);
-        border: none;
-        border-radius: 25px;
-        padding: 0.75rem;
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1rem;
-        text-transform: uppercase;
-        color: #fff;
-        letter-spacing: 1.5px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(255, 202, 40, 0.4);
-        margin-bottom: 10px;
-    }
-
-    .btn-add-to-cart:hover {
-        background: linear-gradient(90deg, #ff6200, #ffca28);
-        box-shadow: 0 6px 20px rgba(255, 98, 0, 0.6);
-        transform: translateY(-3px);
-    }
-
-    .no-games {
-        text-align: center;
-        padding: 50px 0;
-        color: #ff3333;
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1.5rem;
-        text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
-        animation: shake 0.5s ease;
-    }
-
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px); }
-        75% { transform: translateX(10px); }
-    }
-
-    .no-games i {
-        font-size: 2rem;
-        margin-right: 10px;
-    }
-</style>
-
-<!-- List Product Section -->
-<section id="gameList" class="container mt-4">
-    <h2>🎮 Danh Sách Game</h2>
-    <div class="row mt-4">
-        <c:choose>
-            <c:when test="${not empty games}">
-                <c:forEach var="game" items="${games}">
-                    <div class="col-md-4 mb-4">
-                        <div class="card game-card">
-                            <img src="${game.imageUrl}" class="card-img-top game-img" alt="${game.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${game.title}</h5>
-                                <p class="card-text">${game.genre} | ${game.platform}</p>
-                                <p class="card-text">📅 Ngày phát hành: ${game.releaseDate}</p>
-                                <p class="card-text">📦 Còn: ${game.stock} bản</p>
-                                <p class="card-text price">💰 ${game.price} đ</p>
-
-                                <c:choose>
-                                    <c:when test="${empty sessionScope.acc}">
-                                        <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-custom">🔍 Thông tin chi tiết</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-custom">🔍 Thông tin chi tiết</a>
-                                        <!-- Nút Thêm vào giỏ hàng -->
-                                        <form action="AddToCart" method="POST">
-                                            <input type="hidden" name="gameId" value="${game.gameId}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <button type="submit" class="btn btn-add-to-cart"><i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ hàng</button>
-                                        </form>
-                                        <!-- Nút Mua ngay -->
-                                        <form action="AddToCart" method="POST">
-                                            <input type="hidden" name="gameId" value="${game.gameId}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <input type="hidden" name="buyNow" value="true">
-                                            <button type="submit" class="btn btn-custom"><i class="fas fa-cart-plus me-2"></i>🛒 Mua ngay</button>
-                                        </form>
-                                    </c:otherwise>
-                                </c:choose>
+                                    <c:choose>
+                                        <c:when test="${empty sessionScope.acc}">
+                                            <div class="button-group">
+                                                <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-details btn-icon" data-tooltip="Xem Chi Tiết"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="button-group">
+                                                <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-details btn-icon" data-tooltip="Xem Chi Tiết"><i class="fas fa-search"></i></a>
+                                                <form action="AddToCart" method="POST">
+                                                    <input type="hidden" name="gameId" value="${game.gameId}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button type="submit" class="btn btn-add-to-cart btn-icon" data-tooltip="Thêm Vào Giỏ Hàng"><i class="fas fa-cart-plus"></i></button>
+                                                </form>
+                                                <form action="AddToWishlist" method="POST">
+                                                    <input type="hidden" name="gameId" value="${game.gameId}">
+                                                    <button type="submit" class="btn btn-add-to-wishlist btn-icon" data-tooltip="Thêm Vào Yêu Thích"><i class="fas fa-heart"></i></button>
+                                                </form>
+                                            </div>
+                                            <form action="AddToCart" method="POST">
+                                                <input type="hidden" name="gameId" value="${game.gameId}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="buyNow" value="true">
+                                                <button type="submit" class="btn btn-custom"><i class="fas fa-cart-plus me-2"></i> Mua Ngay</button>
+                                            </form>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <p class="no-games"><i class="fas fa-exclamation-triangle"></i>🚫 Hiện chưa có game nào trong cửa hàng!</p>
-            </c:otherwise>
-        </c:choose>
-    </div>
-</section>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <p class="no-games"><i class="fas fa-exclamation-triangle"></i>🚫 Hiện chưa có game nào trong cửa hàng!</p>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </section>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

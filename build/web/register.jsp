@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -205,7 +204,8 @@
         <div class="alert alert-info"><%= message%></div>
         <% } %>
 
-        <% String error = request.getParameter("error");
+        <%-- Hiển thị lỗi nếu có --%>
+        <% String error = (String) request.getAttribute("error");
         if (error != null) {%>
         <div class="alert alert-danger"><%= error%></div>
         <% }%>
@@ -213,12 +213,14 @@
         <form action="RegisterServlet" method="POST" class="mt-3">
             <div class="form-group">
                 <label for="username" class="form-label">Tên đăng nhập</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" 
+                       value="<%= request.getAttribute("username") != null ? request.getAttribute("username") : "" %>" required>
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" 
+                       value="<%= request.getAttribute("email") != null ? request.getAttribute("email") : "" %>" required>
             </div>
 
             <div class="form-group">

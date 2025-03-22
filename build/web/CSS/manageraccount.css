@@ -1,0 +1,262 @@
+/* manageUsers.css */
+
+/* General Body Styling */
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Đảm bảo body chiếm toàn bộ chiều cao viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container Styling */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex: 1; /* Đảm bảo container chiếm không gian còn lại */
+}
+
+/* Heading Styling */
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffca28;
+    text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Glow Animation for Headings */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
+    }
+}
+
+/* Form Container Styling */
+#editForm {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#editForm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Form Labels */
+.form-label {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+/* Form Inputs and Select */
+.form-control, .form-select {
+    background: rgba(20, 20, 40, 0.85);
+    border: 1px solid #00eaff;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+    background: rgba(20, 20, 40, 1);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* Buttons */
+.btn-success {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-warning {
+    background: linear-gradient(90deg, #ffca28, #ff6200);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 202, 40, 0.4);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(90deg, #ff6200, #ffca28);
+    box-shadow: 0 6px 20px rgba(255, 98, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #ff3366, #ff99cc);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(90deg, #ff99cc, #ff3366);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, #666699, #9999cc);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 102, 153, 0.4);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #9999cc, #666699);
+    box-shadow: 0 6px 20px rgba(102, 102, 153, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Table Responsive Container */
+.table-responsive {
+    overflow-x: auto; /* Cuộn ngang */
+    overflow-y: auto; /* Cuộn dọc */
+    max-height: 400px; /* Giới hạn chiều cao tối đa của bảng */
+    -webkit-overflow-scrolling: touch; /* Cuộn mượt trên thiết bị cảm ứng */
+}
+
+/* Table Styling */
+.table {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    min-width: 1000px; /* Đảm bảo bảng có chiều rộng tối thiểu */
+}
+
+.table-dark {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    color: #ffffff; /* Đặt màu chữ thành trắng tinh */
+    text-shadow: none; /* Loại bỏ text-shadow để tăng độ tương phản */
+    position: sticky; /* Giữ header cố định khi cuộn */
+    top: 0;
+    z-index: 1;
+}
+
+.table-hover tbody tr {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(0, 234, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.table td, .table th {
+    border-color: rgba(0, 255, 255, 0.2);
+    vertical-align: middle;
+    white-space: nowrap; /* Ngăn văn bản xuống dòng mặc định */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Thêm dấu ba chấm cho văn bản tràn */
+}
+
+/* Specific Column Widths */
+.table th:nth-child(1), .table td:nth-child(1) { /* ID */
+    width: 5%;
+    min-width: 50px;
+}
+
+.table th:nth-child(2), .table td:nth-child(2) { /* Tên tài khoản */
+    width: 15%;
+    min-width: 150px;
+    white-space: normal; /* Cho phép xuống dòng */
+    word-wrap: break-word;
+}
+
+.table th:nth-child(3), .table td:nth-child(3) { /* Email */
+    width: 20%;
+    min-width: 200px;
+    white-space: normal; /* Cho phép xuống dòng */
+    word-wrap: break-word;
+}
+
+.table th:nth-child(4), .table td:nth-child(4) { /* Số điện thoại */
+    width: 10%;
+    min-width: 120px;
+}
+
+.table th:nth-child(5), .table td:nth-child(5) { /* Địa chỉ */
+    width: 20%;
+    min-width: 200px;
+    white-space: normal; /* Cho phép xuống dòng */
+    word-wrap: break-word;
+}
+
+.table th:nth-child(6), .table td:nth-child(6) { /* Vai trò */
+    width: 10%;
+    min-width: 100px;
+}
+
+.table th:nth-child(7), .table td:nth-child(7) { /* Ngày tạo */
+    width: 10%;
+    min-width: 120px;
+}
+
+.table th:nth-child(8), .table td:nth-child(8) { /* Hành động */
+    width: 10%;
+    min-width: 120px;
+}
+
+/* HR Styling */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #00eaff, transparent);
+    margin: 2rem 0;
+}

@@ -6,8 +6,12 @@
 <%
     // Lấy từ khóa tìm kiếm từ request
     String keyword = request.getParameter("keyword");
-    List<Game> searchResults = (keyword != null && !keyword.trim().isEmpty()) ? DAO.searchGames(keyword) : null;
+    if (keyword != null) {
+        keyword = keyword.trim(); // Loại bỏ khoảng trắng thừa
+    }
+    List<Game> searchResults = (keyword != null && !keyword.isEmpty()) ? DAO.searchGames(keyword) : null;
     request.setAttribute("searchResults", searchResults);
+    request.setAttribute("keyword", keyword);
 %>
 
 <!-- Bootstrap CSS -->
@@ -26,12 +30,15 @@
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
+        min-height: 100vh; /* Đảm bảo body chiếm toàn bộ chiều cao viewport */
+        display: flex;
+        flex-direction: column;
     }
 
     .container {
         padding-top: 50px;
         padding-bottom: 50px;
+        flex: 1; /* Đảm bảo container chiếm không gian còn lại */
     }
 
     /* Tiêu đề */
@@ -60,6 +67,8 @@
         max-width: 600px;
         margin: 0 auto;
         position: relative;
+        display: flex;
+        align-items: center;
     }
 
     .search-form .form-control {
@@ -70,6 +79,7 @@
         padding: 0.75rem 1.5rem;
         font-size: 1.1rem;
         transition: all 0.3s ease;
+        flex: 1;
     }
 
     .search-form .form-control:focus {
@@ -90,12 +100,22 @@
         letter-spacing: 1.5px;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+        margin-left: 10px;
     }
 
     .search-form .btn-primary:hover {
         background: linear-gradient(90deg, #00eaff, #ff00ff);
         box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
         transform: translateY(-3px);
+    }
+
+    /* Khu vực kết quả tìm kiếm */
+    .results-container {
+        max-height: 600px; /* Giới hạn chiều cao khu vực kết quả */
+        overflow-y: auto; /* Cho phép cuộn dọc bên trong */
+        overflow-x: hidden; /* Ngăn cuộn ngang */
+        -webkit-overflow-scrolling: touch; /* Cuộn mượt trên thiết bị cảm ứng */
+        padding: 10px;
     }
 
     /* Card game */
@@ -114,7 +134,7 @@
     }
 
     .game-img {
-        height: 250px;
+        height: 200px;
         object-fit: cover;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
@@ -126,28 +146,35 @@
     }
 
     .card-body {
-        padding: 20px;
-        text-align: center;
+        padding: 15px;
+        text-align: left;
     }
 
     .card-title {
         font-family: 'Orbitron', sans-serif;
         color: #00eaff;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
+        font-size: 1.3rem;
+        margin-bottom: 8px;
         text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
     }
 
     .card-text {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: #b0b0b0;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-text i {
+        margin-right: 5px;
+        color: #ffca28;
     }
 
     .card-text.price {
         color: #ffca28;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
     }
 
@@ -164,6 +191,7 @@
         letter-spacing: 1.5px;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+        text-align: center;
     }
 
     .btn-custom:hover {
@@ -199,34 +227,43 @@
     <h2>🔍 Tìm Kiếm Game</h2>
 
     <!-- Form tìm kiếm -->
-    <form action="search.jsp" method="GET" class="d-flex justify-content-center mt-3 search-form">
-        <input type="text" name="keyword" class="form-control" placeholder="Nhập tên game, thể loại, nền tảng..." value="${param.keyword}" required>
-        <button type="submit" class="btn btn-primary ms-2"><i class="fas fa-search me-2"></i>Tìm kiếm</button>
+    <form action="search.jsp" method="GET" class="search-form">
+        <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm game..." value="${param.keyword}" required>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-search me-2"></i>Tìm kiếm</button>
     </form>
 
-    <div class="row mt-4">
-        <c:choose>
-            <c:when test="${not empty searchResults}">
-                <c:forEach var="game" items="${searchResults}">
-                    <div class="col-md-4 mb-4">
-                        <div class="card game-card">
-                            <img src="${game.imageUrl}" class="card-img-top game-img" alt="${game.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${game.title}</h5>
-                                <p class="card-text">${game.genre} | ${game.platform}</p>
-                                <p class="card-text">📅 Ngày phát hành: ${game.releaseDate}</p>
-                                <p class="card-text">📦 Còn: ${game.stock} bản</p>
-                                <p class="card-text price">💰 $${game.price}</p>
-                                <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-custom">🔍 Xem chi tiết</a>
+    <div class="results-container mt-4">
+        <div class="row">
+            <c:choose>
+                <c:when test="${not empty searchResults}">
+                    <c:forEach var="game" items="${searchResults}">
+                        <div class="col-md-4 mb-4">
+                            <div class="card game-card">
+                                <img src="${game.imageUrl}" class="card-img-top game-img" alt="${game.title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${game.title}</h5>
+                                    <p class="card-text">${game.genre} | ${game.platform}</p>
+                                    <p class="card-text"><i class="fas fa-calendar-alt"></i> Ngày phát hành: ${game.releaseDate}</p>
+                                    <p class="card-text"><i class="fas fa-box"></i> Còn: ${game.stock} bản</p>
+                                    <p class="card-text price"><i class="fas fa-money-bill-wave"></i> ${game.price} VND</p>
+                                    <a href="gameDetails.jsp?id=${game.gameId}" class="btn btn-custom">Xem chi tiết</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <p class="no-results"><i class="fas fa-exclamation-triangle"></i>🚫 Không tìm thấy kết quả nào!</p>
-            </c:otherwise>
-        </c:choose>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${keyword != null && !keyword.isEmpty()}">
+                            <p class="no-results"><i class="fas fa-exclamation-triangle"></i>🚫 Không tìm thấy game nào với từ khóa: "<strong>${keyword}</strong>"!</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p class="no-results"><i class="fas fa-exclamation-triangle"></i>🚫 Vui lòng nhập từ khóa để tìm kiếm!</p>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
 </div>
 
