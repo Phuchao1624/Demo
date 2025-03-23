@@ -1,0 +1,250 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 22, 2025, 12:43:43 AM
+    Author     : PhucHao
+*/
+/* cart.css */
+
+/* General Body Styling */
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container Styling */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex: 1;
+}
+
+/* Heading Styling */
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffca28;
+    text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* Glow Animation for Headings */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
+    }
+}
+
+/* Alert Styling */
+.alert {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid #00eaff;
+    color: #00eaff;
+    border-radius: 10px;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Empty Cart Message */
+.empty-cart {
+    text-align: center;
+    padding: 50px 0;
+    color: #ff3333;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.empty-cart i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+/* Table Responsive Container */
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 400px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Table Styling */
+.table {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    min-width: 800px;
+}
+
+.table-dark {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    color: #ffffff;
+    text-shadow: none;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table-hover tbody tr {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(0, 234, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.table td, .table th {
+    border-color: rgba(0, 255, 255, 0.2);
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Game Image in Table */
+.game-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Quantity Input */
+input[type="number"] {
+    width: 60px;
+    background: rgba(20, 20, 40, 0.85);
+    border: 1px solid #00eaff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #ff3366, #ff99cc);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(90deg, #ff99cc, #ff3366);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, #666699, #9999cc);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 102, 153, 0.4);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #9999cc, #666699);
+    box-shadow: 0 6px 20px rgba(102, 102, 153, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Action Buttons Container */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
