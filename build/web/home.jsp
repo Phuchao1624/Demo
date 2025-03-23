@@ -1,128 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Popper.js (Bootstrap 4 cần Popper.js để dropdown hoạt động) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-
-<!-- Bootstrap 4.6 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Store</title>
-    
-    <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Popper.js (Bootstrap 4 cần Popper.js để dropdown hoạt động) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-<!-- Bootstrap 4.6 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #f4f4f9;
-            color: #333;
-        }
-
-        /* Toast Container */
-        .toast {
-            position: fixed;
-            right: 30px;
-            min-width: 320px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            z-index: 1050; /* Đảm bảo toast nằm trên các phần tử khác */
-        }
-
-        /* Điều chỉnh vị trí động cho từng toast */
-        .toast-success {
-            bottom: 30px; /* Toast đầu tiên ở dưới cùng */
-        }
-
-        .toast-login {
-            bottom: 130px; /* Toast thứ hai cách toast đầu 100px */
-        }
-
-        /* Toast Header */
-        .toast-header {
-            padding: 15px 20px;
-            border-bottom: none;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .toast-header i {
-            font-size: 1.5rem;
-            margin-right: 10px;
-        }
-
-        .toast-header strong {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* Toast Body */
-        .toast-body {
-            padding: 20px;
-            background: #fff;
-            color: #444;
-            font-size: 1rem;
-            line-height: 1.5;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Success Register Toast */
-        .toast-success .toast-header {
-            background: linear-gradient(135deg, #34c759, #28a745);
-        }
-
-        /* Success Login Toast */
-        .toast-login .toast-header {
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-        }
-
-        /* Close Button */
-        .close {
-            color: white;
-            opacity: 0.9;
-            font-size: 1.2rem;
-            margin-left: auto;
-            transition: opacity 0.3s ease;
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            opacity: 0.6;
-        }
-
-        /* Animation */
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .toast {
-            animation: slideIn 0.5s ease forwards;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/home.css">
 </head>
 
 <body>
@@ -135,7 +30,7 @@
         <div class="toast-header">
             <i class="fas fa-check-circle"></i>
             <strong class="mr-auto">Đăng ký thành công</strong>
-            <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -154,7 +49,7 @@
         <div class="toast-header">
             <i class="fas fa-sign-in-alt"></i>
             <strong class="mr-auto">Đăng nhập thành công</strong>
-            <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -176,30 +71,43 @@
     <%-- Footer --%>
     <jsp:include page="Includes/footer.jsp" />
 
-    <%-- Scripts --%>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap 5.3.0 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <%-- Custom JavaScript --%>
     <script>
         $(document).ready(function() {
             // Khởi tạo toast với tự động ẩn sau 3 giây
             $('.toast').each(function() {
-                $(this).toast({
+                var toast = new bootstrap.Toast(this, {
                     autohide: true,
                     delay: 3000
                 });
-                $(this).toast('show');
+                toast.show();
             });
 
-            // Đảm bảo nút "×" hoạt động
-            $('.close').click(function() {
-                $(this).closest('.toast').toast('hide');
+            // JavaScript cho header hide/show on scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
             });
 
-            // Xử lý cuộn khi trang được tải với hash (ví dụ: sau khi đăng nhập)
-            const hash = window.location.hash.substring(1); // Lấy phần hash (bỏ #)
+            // Xử lý cuộn khi trang được tải với hash
+            const hash = window.location.hash.substring(1);
             if (hash) {
                 const targetElement = document.getElementById(hash);
                 if (targetElement) {
