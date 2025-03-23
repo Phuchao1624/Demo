@@ -64,21 +64,23 @@ public class AddToCart extends HttpServlet {
             return;
         }
 
-        // Thêm vào giỏ hàng (lưu vào DB thông qua DAO)
+        // Kiểm tra nếu là "Mua ngay"
+        String buyNow = request.getParameter("buyNow");
+        boolean isBuyNow = "true".equals(buyNow);
+
+        // Nếu là "Mua ngay", xóa giỏ hàng trước khi thêm sản phẩm
+        if (isBuyNow) {
+            DAO.clearCart(user.getUserId());  // Xóa toàn bộ giỏ hàng
+        }
+
+        // Thêm sản phẩm vào giỏ hàng
         boolean success = DAO.addToCart(user.getUserId(), gameId, quantity);
 
         if (success) {
-            session.setAttribute("cartMessage", "Đã thêm " + game.getTitle() + " vào giỏ hàng!");
+            session.setAttribute("cartMessage", isBuyNow ? "Đang chuyển đến thanh toán..." : "Đã thêm " + game.getTitle() + " vào giỏ hàng!");
 
-            // Kiểm tra nếu là "Mua ngay"
-            String buyNow = request.getParameter("buyNow");
-            System.out.println("Buy Now clicked: " + buyNow); // Debug log
-
-            if ("true".equals(buyNow)) {
-                response.sendRedirect("checkout.jsp");
-            } else {
-                response.sendRedirect("cart.jsp");
-            }
+            // Chuyển hướng
+            response.sendRedirect(isBuyNow ? "checkout.jsp" : "cart.jsp");
         } else {
             session.setAttribute("cartMessage", "Thêm vào giỏ hàng thất bại!");
             response.sendRedirect("gameDetails.jsp?id=" + gameId + "&error=Add failed");

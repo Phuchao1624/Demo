@@ -10,10 +10,20 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- Bootstrap 4.6 JS + jQuery + Popper.js -->
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Popper.js (Bootstrap 4 cần Popper.js để dropdown hoạt động) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap 4.6 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+
+
+
+<!-- Bootstrap 4.6 JS + jQuery + Popper.js -->
+
 
 <c:set var="acc" value="${sessionScope.acc}" />
 
@@ -203,7 +213,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3 fixed-top">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand text-warning fw-bold" href="home.jsp">
+        <a class="navbar-brand text-warning fw-bold" href="Home">
             <i class="fas fa-gamepad"></i> GameStore
         </a>
 
@@ -260,7 +270,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="profile.jsp"><i class="fas fa-user-circle"></i> Hồ sơ</a>
-                                <a class="dropdown-item" href="orders.jsp"><i class="fas fa-shopping-bag"></i> Đơn hàng</a>
+                                <a class="dropdown-item" href="orderDetails.jsp"><i class="fas fa-shopping-bag"></i> Đơn hàng</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="logout"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a>
                             </div>

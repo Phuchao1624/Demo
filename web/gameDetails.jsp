@@ -453,9 +453,7 @@
                                     <c:when test="${game.stock > 0}">
                                         <button type="submit" class="btn btn-custom"><i class="fas fa-cart-plus me-2"></i>🛒 MUA NGAY</button>
                                     </c:when>
-                                    <c:otherwise>
-                                        <button type="button" class="btn btn-custom" disabled><i class="fas fa-exclamation-triangle me-2"></i>⛔ Hết hàng</button>
-                                    </c:otherwise>
+                                    
                                 </c:choose>
                             </form>
                         </c:otherwise>
