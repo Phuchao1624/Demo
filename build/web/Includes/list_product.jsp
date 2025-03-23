@@ -63,12 +63,19 @@
                                                     <button type="submit" class="btn btn-add-to-wishlist btn-icon" data-tooltip="Thêm Vào Yêu Thích"><i class="fas fa-heart"></i></button>
                                                 </form>
                                             </div>
-                                            <form action="AddToCart" method="POST">
-                                                <input type="hidden" name="gameId" value="${game.gameId}">
-                                                <input type="hidden" name="quantity" value="1">
-                                                <input type="hidden" name="buyNow" value="true">
-                                                <button type="submit" class="btn btn-custom"><i class="fas fa-cart-plus me-2"></i> Mua Ngay</button>
-                                            </form>
+                                            <div class="button-group">        
+                                                
+                                            <div class="button-group">        
+                                                <form action="AddToCart" method="POST">
+                                                    <input type="hidden" name="gameId" value="${game.gameId}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <input type="hidden" name="buyNow" value="true">
+                                                    <button type="submit" class="btn btn-custom">
+                                                        <i class="fas fa-cart-plus me-2"></i> Mua Ngay
+                                                    </button>
+                                                </form>
+                                            </div>   
+                                             </div>   
                                         </c:otherwise>
                                     </c:choose>
                                 </div>

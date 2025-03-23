@@ -69,10 +69,13 @@ public class AddToCart extends HttpServlet {
 
         if (success) {
             session.setAttribute("cartMessage", "Đã thêm " + game.getTitle() + " vào giỏ hàng!");
+
             // Kiểm tra nếu là "Mua ngay"
             String buyNow = request.getParameter("buyNow");
+            System.out.println("Buy Now clicked: " + buyNow); // Debug log
+
             if ("true".equals(buyNow)) {
-                response.sendRedirect("Checkout");
+                response.sendRedirect("checkout.jsp");
             } else {
                 response.sendRedirect("cart.jsp");
             }

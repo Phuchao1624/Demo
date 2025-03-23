@@ -58,7 +58,7 @@
                         <th>Ngày đặt</th>
                         <th>Tổng tiền</th>
                         <th>Trạng thái</th>
-                        <th>Chi tiết</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -80,9 +80,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td>
-                                <a href="orderDetails.jsp?id=${order.orderId}" class="btn btn-sm btn-primary">Xem chi tiết</a>
-                            </td>
+                           
                         </tr>
                     </c:forEach>
                 </tbody>

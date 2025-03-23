@@ -15,7 +15,7 @@ public class VNPayConfig {
     public static final String VNP_TMN_CODE = "4M9XM15R";
     public static final String VNP_HASH_SECRET = "LQ9VH1TGQTLZ9Y1N4PK13NZ1WRPA9LLN";
     public static final String VNP_URL = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static final String VNP_RETURN_URL = "http://localhost:8080/QuatVN2/VNPayReturn";
+    public static final String VNP_RETURN_URL = "http://localhost:8080/ProjectGame/VNPayReturn";
 
     public static String generatePaymentUrl(int orderId, String ipAddress, long amount) {
         try {

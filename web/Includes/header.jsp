@@ -221,7 +221,7 @@
                         <a class="nav-link" href="wishlist.jsp"><i class="fas fa-heart"></i> Game yêu thích</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="purchaseHistory.jsp"><i class="fas fa-history"></i> Lịch sử mua</a>
+                        <a class="nav-link" href="orderDetails.jsp"><i class="fas fa-history"></i> Lịch sử mua</a>
                     </li>
                     <!-- Nút giỏ hàng -->
                     <li class="nav-item">
