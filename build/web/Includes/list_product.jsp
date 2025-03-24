@@ -58,13 +58,11 @@
                                                     <input type="hidden" name="quantity" value="1">
                                                     <button type="submit" class="btn btn-add-to-cart btn-icon" data-tooltip="Thêm Vào Giỏ Hàng"><i class="fas fa-cart-plus"></i></button>
                                                 </form>
-                                                <form action="AddToWishlist" method="POST">
+                                                <form class="add-to-wishlist-form" data-game-id="${game.gameId}">
                                                     <input type="hidden" name="gameId" value="${game.gameId}">
                                                     <button type="submit" class="btn btn-add-to-wishlist btn-icon" data-tooltip="Thêm Vào Yêu Thích"><i class="fas fa-heart"></i></button>
                                                 </form>
                                             </div>
-                                            <div class="button-group">        
-                                                
                                             <div class="button-group">        
                                                 <form action="AddToCart" method="POST">
                                                     <input type="hidden" name="gameId" value="${game.gameId}">
@@ -75,7 +73,6 @@
                                                     </button>
                                                 </form>
                                             </div>   
-                                             </div>   
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
@@ -90,7 +87,62 @@
         </div>
     </section>
 
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="wishlistToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Thông Báo</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Đã thêm game vào danh sách yêu thích!
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lấy tất cả các form "AddToWishlist"
+            const wishlistForms = document.querySelectorAll('.add-to-wishlist-form');
+
+            wishlistForms.forEach(form => {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Ngăn form gửi yêu cầu thông thường
+
+                    // Lấy gameId từ thuộc tính data
+                    const gameId = form.getAttribute('data-game-id');
+
+                    // Tạo FormData để gửi dữ liệu
+                    const formData = new FormData();
+                    formData.append('gameId', gameId);
+
+                    // Gửi yêu cầu AJAX
+                    fetch('AddToWishlist', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Hiển thị toast thông báo
+                            const toastElement = document.getElementById('wishlistToast');
+                            const toast = new bootstrap.Toast(toastElement);
+                            toast.show();
+                        } else {
+                            alert('Có lỗi xảy ra khi thêm vào wishlist: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra khi thêm vào wishlist.');
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

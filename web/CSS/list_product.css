@@ -228,3 +228,26 @@ h2 {
     font-size: 2rem;
     margin-right: 10px;
 }
+/* Toast Notification Styling */
+.toast-container {
+    z-index: 1050;
+}
+
+.toast {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid #00eaff;
+    border-radius: 10px;
+    color: #00eaff;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+.toast-header {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.4);
+}
+
+.toast-body {
+    background: rgba(40, 40, 70, 0.95);
+    color: #e0e0e0;
+}

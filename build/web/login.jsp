@@ -95,17 +95,7 @@
             text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
         }
 
-        .form-control {
-            background: rgba(20, 20, 40, 0.85);
-            border: 1px solid #00eaff;
-            color: #fff;
-            border-radius: 25px; /* Bo tròn hoàn toàn hai đầu của ô nhập */
-            padding: 0.75rem 1.25rem;
-            font-size: 1rem;
-            transition: all 0.4s ease;
-            height: 45px;
-            width: 100%;
-        }
+        
 
         .form-control:focus {
             border-color: #ff00ff;

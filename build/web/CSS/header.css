@@ -1,0 +1,192 @@
+/* header.css */
+
+/* Navbar chính */
+.navbar.navbar-expand-lg.navbar-dark.fixed-top {
+    background: #1a2c5b;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-bottom: 1px solid #00b7eb; /* Thay xanh lá thành xanh da trời */
+}
+
+/* Logo */
+.navbar-brand.text-warning.fw-bold {
+    font-size: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffd700 !important; /* Giữ màu vàng */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-brand.text-warning.fw-bold:hover {
+    color: #00b7eb !important;
+    text-shadow: 0 0 10px rgba(0, 183, 235, 0.8), 0 0 20px rgba(0, 183, 235, 0.5);
+}
+
+/* Liên kết trong navbar */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.4rem 0.8rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 3px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    background: rgba(0, 183, 235, 0.1); /* Nền xanh da trời nhẹ */
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.5); /* Thêm glow */
+}
+
+/* Nút toggle cho mobile */
+.navbar-toggler {
+    border-color: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    padding: 0.25rem 0.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.5); /* Thêm glow */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 183, 235, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; /* Icon xanh da trời */
+}
+
+/* Thanh tìm kiếm */
+.navbar .form-control {
+    border: 1px solid #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    background: #2a3a6b !important;
+    color: #ffffff !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.3); /* Thêm glow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .form-control:focus {
+    border-color: #00b7eb !important;
+    box-shadow: 0 0 10px rgba(0, 183, 235, 0.7); /* Glow mạnh hơn khi focus */
+    background: #2a3a6b !important;
+    color: #ffffff !important;
+}
+
+.navbar .btn-outline-warning {
+    margin-right: 10px;
+    border: 1px solid #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    color: #00b7eb !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .btn-outline-warning:hover {
+    background: #00b7eb !important;
+    color: #1a2c5b !important;
+    box-shadow: 0 0 10px rgba(0, 183, 235, 0.7); /* Thêm glow */
+}
+
+/* Dropdown */
+.dropdown-menu {
+    background: #1a2c5b !important;
+    border: 1px solid #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    box-shadow: 0 2px 10px rgba(0, 183, 235, 0.3); /* Thêm glow */
+}
+
+.dropdown-item {
+    color: #ffffff !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    color: #1a2c5b !important;
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.5); /* Thêm glow */
+}
+
+/* Đường phân cách trong dropdown */
+.dropdown-divider {
+    border-color: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+}
+
+/* Nút đăng nhập/đăng ký */
+.navbar .btn-outline-light {
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .btn-outline-light:hover {
+    background: #ffffff !important;
+    color: #1a2c5b !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Glow trắng */
+}
+
+.navbar .btn-warning {
+    background: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    color: #1a2c5b !important;
+    border: none !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.9rem;
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.5); /* Thêm glow */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .btn-warning:hover {
+    background: #00d1ff !important; /* Sáng hơn khi hover */
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 183, 235, 0.7); /* Glow mạnh hơn */
+}
+
+/* Badge */
+.navbar .badge {
+    vertical-align: middle;
+    background: #00b7eb !important; /* Thay xanh lá thành xanh da trời */
+    color: #1a2c5b !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+    box-shadow: 0 0 5px rgba(0, 183, 235, 0.5); /* Thêm glow */
+}
+
+/* Khoảng cách body */
+body {
+    padding-top: 60px;
+    /* Xóa background: #0f0f0f; */
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding: 0.5rem 0;
+        background: #1a2c5b;
+        border-top: 1px solid #00b7eb; /* Thay xanh lá thành xanh da trời */
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .navbar .form-control {
+        margin: 0.5rem 0;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar-brand.text-warning.fw-bold {
+        font-size: 1.2rem;
+    }
+}

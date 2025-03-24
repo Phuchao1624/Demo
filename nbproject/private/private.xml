@@ -3,13 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/web/META-INF/context.xml</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/src/java/utils/VNPayConfig.java</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/web/transaction.jsp</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/src/java/entity/Transaction.java</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/src/java/controller/VNPay/VNPayServlet.java</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/src/java/controller/VNPay/TransactionController.java</file>
-            <file>file:/D:/AA/CodeJavaWeb/QuatVN2_1/web/WEB-INF/web.xml</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller/LogoutServlet.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/list_product.css</file>
+            <file>file:/E:/Demo-master/Demo-master/web/wishlist.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/register.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller_wishlish/RemoveFromWishlist.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/checkout.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/wishlist.css</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/cart.css</file>
+            <file>file:/E:/Demo-master/Demo-master/web/cart.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/search.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/model/DatabaseInfo.java</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller/Home.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/orderHistory.css</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller_cart/AddToCart.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/manageAccounts.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/Includes/header.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller/LoginServlet.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/JS/header.js</file>
+            <file>file:/E:/Demo-master/Demo-master/web/editProfile.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/Includes/list_product.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/order.css</file>
+            <file>file:/E:/Demo-master/Demo-master/web/transaction.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/login.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/home.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/header.css</file>
+            <file>file:/E:/Demo-master/Demo-master/src/java/controller_wishlish/AddToWishlist.java</file>
+            <file>file:/E:/Demo-master/Demo-master/web/CSS/home.css</file>
+            <file>file:/E:/Demo-master/Demo-master/web/gameDetails.jsp</file>
+            <file>file:/E:/Demo-master/Demo-master/web/orderDetails.jsp</file>
         </group>
     </open-files>
 </project-private>
