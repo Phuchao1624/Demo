@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 
 @WebServlet("/VNPayReturn")
 public class VNPayReturnServlet extends HttpServlet {
+
     private DAO dao;
     private static final Logger LOGGER = Logger.getLogger(VNPayReturnServlet.class.getName());
 
@@ -77,6 +78,8 @@ public class VNPayReturnServlet extends HttpServlet {
                 dao.clearCart(user.getUserId()); // Xóa giỏ hàng sau khi thanh toán thành công
                 LOGGER.info("Thanh toán thành công cho đơn hàng: " + orderId);
                 session.setAttribute("checkoutMessage", "Thanh toán thành công! Mã đơn hàng: " + orderId);
+                session.removeAttribute("orderId");
+
                 response.sendRedirect("cart.jsp");
             } else {
                 LOGGER.warning("Thanh toán thất bại cho đơn hàng: " + vnp_TxnRef + ". Mã lỗi: " + vnp_ResponseCode);

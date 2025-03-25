@@ -29,20 +29,44 @@ public class DAO implements DatabaseInfo {
             return null;
         }
     }
+
     public int getLatestOrderId(int userId) {
-    String query = "SELECT TOP 1 order_id FROM Orders WHERE user_id = ? ORDER BY created_at DESC";
-    try (Connection conn = getConnect();
-         PreparedStatement ps = conn.prepareStatement(query)) {
-        ps.setInt(1, userId);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            return rs.getInt("order_id");
+        int orderId = -1;
+        String sql = "SELECT TOP 1 order_id FROM Orders WHERE user_id = ? ORDER BY created_at DESC";
+
+        try (Connection conn = getConnect(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    orderId = rs.getInt("order_id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+
+        return orderId;  // Nếu không tìm thấy, giữ nguyên -1 để hệ thống biết cần tạo mới
     }
-    return -1; // Không tìm thấy order nào
-}
+
+    public int createNewOrder(int userId, BigDecimal total) {
+        int newOrderId = -1;
+        String sql = "INSERT INTO Orders (user_id, total_amount, status, created_at) VALUES (?, ?, 'pending', GETDATE());";
+
+        try (Connection conn = getConnect(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            ps.setInt(1, userId);
+            ps.setBigDecimal(2, total);
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                newOrderId = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newOrderId;
+    }
 
     // Các phương thức hiện có (giữ nguyên)
     public boolean updateUser(int userId, String username, String phone, String address, String password) {

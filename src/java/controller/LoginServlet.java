@@ -76,17 +76,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         DAO dao = new DAO();
         User a = dao.login(email, password);
+        session.removeAttribute("orderId");
         if (a == null) {
             request.setAttribute("error", "Wrong email or password");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             System.out.println("Đăng nhập thành công: " + a);
-            HttpSession session = request.getSession();
+            
             session.setAttribute("acc", a);
             response.sendRedirect("home.jsp");
         }

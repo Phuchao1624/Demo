@@ -139,8 +139,12 @@ public class TransactionController extends HttpServlet {
         } else {
             dao.updateOrderStatus(orderId, "completed");
             dao.clearCart(user.getUserId());
+            session.removeAttribute("orderId");
+            session.setAttribute("orderId", null);
             session.setAttribute("checkoutMessage", "Thanh toán thành công!");
+
             response.sendRedirect("cart.jsp");
+
         }
     }
 

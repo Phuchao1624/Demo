@@ -25,6 +25,25 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="CSS/list_product.css">
+    <style>
+        /* Đảm bảo nội dung không gây xung đột với header */
+        body {
+            padding-top: 70px; /* Khoảng cách cho header fixed-top */
+        }
+        #gameList {
+            margin-top: 20px;
+            min-height: calc(100vh - 70px);
+        }
+        /* Đảm bảo toast không che menu dropdown */
+        .toast-container {
+            z-index: 1050; /* Cao hơn navbar mặc định (1030) */
+        }
+        /* Đảm bảo menu dropdown hiển thị */
+        .navbar-collapse {
+            z-index: 1100; /* Cao hơn các thành phần khác */
+            background: #1a2c5b; /* Đảm bảo nền không trong suốt */
+        }
+    </style>
 </head>
 <body>
     <!-- List Product Section -->
@@ -100,27 +119,18 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom JavaScript -->
     <script>
+        // JavaScript cho wishlist
         document.addEventListener('DOMContentLoaded', function () {
-            // Lấy tất cả các form "AddToWishlist"
             const wishlistForms = document.querySelectorAll('.add-to-wishlist-form');
-
             wishlistForms.forEach(form => {
                 form.addEventListener('submit', function (event) {
-                    event.preventDefault(); // Ngăn form gửi yêu cầu thông thường
-
-                    // Lấy gameId từ thuộc tính data
+                    event.preventDefault();
                     const gameId = form.getAttribute('data-game-id');
-
-                    // Tạo FormData để gửi dữ liệu
                     const formData = new FormData();
                     formData.append('gameId', gameId);
 
-                    // Gửi yêu cầu AJAX
                     fetch('AddToWishlist', {
                         method: 'POST',
                         body: formData
@@ -128,7 +138,6 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // Hiển thị toast thông báo
                             const toastElement = document.getElementById('wishlistToast');
                             const toast = new bootstrap.Toast(toastElement);
                             toast.show();
