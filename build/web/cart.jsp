@@ -10,7 +10,6 @@
 <!-- Bootstrap 4.6 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-
 <%
     User user = (User) session.getAttribute("acc");
     if (user != null) {

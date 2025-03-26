@@ -29,44 +29,20 @@ public class DAO implements DatabaseInfo {
             return null;
         }
     }
-
     public int getLatestOrderId(int userId) {
-        int orderId = -1;
-        String sql = "SELECT TOP 1 order_id FROM Orders WHERE user_id = ? ORDER BY created_at DESC";
-
-        try (Connection conn = getConnect(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, userId);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    orderId = rs.getInt("order_id");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    String query = "SELECT TOP 1 order_id FROM Orders WHERE user_id = ? ORDER BY created_at DESC";
+    try (Connection conn = getConnect();
+         PreparedStatement ps = conn.prepareStatement(query)) {
+        ps.setInt(1, userId);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("order_id");
         }
-
-        return orderId;  // Nếu không tìm thấy, giữ nguyên -1 để hệ thống biết cần tạo mới
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
-
-    public int createNewOrder(int userId, BigDecimal total) {
-        int newOrderId = -1;
-        String sql = "INSERT INTO Orders (user_id, total_amount, status, created_at) VALUES (?, ?, 'pending', GETDATE());";
-
-        try (Connection conn = getConnect(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            ps.setInt(1, userId);
-            ps.setBigDecimal(2, total);
-            ps.executeUpdate();
-
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                newOrderId = rs.getInt(1);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return newOrderId;
-    }
+    return -1; // Không tìm thấy order nào
+}
 
     // Các phương thức hiện có (giữ nguyên)
     public boolean updateUser(int userId, String username, String phone, String address, String password) {
@@ -229,8 +205,7 @@ public class DAO implements DatabaseInfo {
                         rs.getString("platform"),
                         rs.getInt("stock"),
                         rs.getTimestamp("created_at"),
-                        rs.getString("image_url")
-                );
+                        rs.getString("image_url")                );
                 games.add(game);
             }
         } catch (SQLException e) {
@@ -259,7 +234,7 @@ public class DAO implements DatabaseInfo {
                         rs.getString("platform"),
                         rs.getInt("stock"),
                         rs.getTimestamp("created_at"),
-                        rs.getString("image_url")
+                        rs.getString("image_url")                
                 );
             }
         } catch (SQLException e) {
@@ -560,7 +535,7 @@ public class DAO implements DatabaseInfo {
                         rs.getString("platform"),
                         rs.getInt("stock"),
                         rs.getTimestamp("created_at"),
-                        rs.getString("image_url")
+                        rs.getString("image_url")                        
                 );
                 CartItem cartItem = new CartItem(game, rs.getInt("quantity"));
                 cartItems.put(game.getGameId(), cartItem);
@@ -754,4 +729,46 @@ public class DAO implements DatabaseInfo {
         }
     }
 
+
+public List<Game> getGamesByCategory(int categoryId) {
+    Connection conn = getConnect();
+    List<Game> games = new ArrayList<>();
+    if (conn == null) {
+        System.err.println("Connection is null! Cannot execute query.");
+        return games;
+    }
+
+    String query = "SELECT * FROM Games WHERE category_id = ?";
+    try (PreparedStatement ps = conn.prepareStatement(query)) {
+        ps.setInt(1, categoryId);
+        System.out.println("Executing query: " + query + " with categoryId = " + categoryId);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Game game = new Game(
+                    rs.getInt("game_id"),
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    rs.getBigDecimal("price"),
+                    rs.getDate("release_date"),
+                    rs.getString("developer"),
+                    rs.getString("publisher"),
+                    rs.getString("genre"),
+                    rs.getString("platform"),
+                    rs.getInt("stock"),
+                    rs.getTimestamp("created_at"),
+                    rs.getString("image_url")
+                );
+                game.setCategoryId(rs.getInt("category_id"));
+                games.add(game);
+                System.out.println("Found game: " + game.getTitle());
+            }
+        }
+        System.out.println("Total games found: " + games.size());
+    } catch (SQLException e) {
+        System.err.println("Error executing query in getGamesByCategory:");
+        e.printStackTrace();
+    }
+    return games;
+}
+  
 }

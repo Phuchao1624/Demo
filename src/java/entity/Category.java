@@ -1,22 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entity;
 
-/**
- *
- * @author ADMIN
- */
 public class Category {
     private int categoryId;
-    private String categoryName;
+    private String name;
+    private String description;
 
-    public Category() {}
-    
-    public Category(int categoryId, String categoryName) {
+    public Category() {
+    }
+
+    public Category(int categoryId, String name, String description) {
         this.categoryId = categoryId;
-        this.categoryName = categoryName;
+        this.name = name;
+        this.description = description;
     }
 
     public int getCategoryId() {
@@ -27,17 +22,28 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return "Category{" + "categoryId=" + categoryId + ", categoryName=" + categoryName + '}';
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
-    
 }

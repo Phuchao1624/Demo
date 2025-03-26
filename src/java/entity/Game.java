@@ -17,6 +17,7 @@ public class Game {
     private int stock;
     private Timestamp createdAt;
     private String imageUrl;
+    private int categoryId; // Thêm categoryId
 
     public Game(int gameId, String title, String description, BigDecimal price, Date releaseDate,
             String developer, String publisher, String genre, String platform, int stock,
@@ -33,6 +34,11 @@ public class Game {
         this.stock = stock;
         this.createdAt = createdAt;
         this.imageUrl = imageUrl;
+        
+    }
+
+    public Game() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getGameId() { return gameId; }
@@ -59,7 +65,8 @@ public class Game {
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
-
+    public int getCategoryId() { return categoryId; }
+    public void setCategoryId(int categoryId) { this.categoryId = categoryId; }
     @Override
     public String toString() {
         return "Game{"

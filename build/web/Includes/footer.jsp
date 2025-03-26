@@ -18,25 +18,22 @@
             <div class="col-md-3">
                 <h5 class="text-cyan border-bottom border-cyan pb-2">Chuyên Mục</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-muted">Game Bắn Súng</a></li>
-                    <li><a href="#" class="text-muted">Game Nhập Vai</a></li>
-                    <li><a href="#" class="text-muted">Game Chính Thức</a></li>
-                    <li><a href="#" class="text-muted">Game Mobile</a></li>
-                    <li><a href="#" class="text-muted">Game Đối Kháng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category?categoryId=1" class="text-muted">Game Bắn Súng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category?categoryId=2" class="text-muted">Game Nhập Vai</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category?categoryId=3" class="text-muted">Game Mobile</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category?categoryId=4" class="text-muted">Game Đối Kháng</a></li>
                 </ul>
             </div>
 
-            <!-- Thể Loại Section -->
+<!--             Thể Loại Section 
             <div class="col-md-3">
                 <h5 class="text-cyan border-bottom border-cyan pb-2">Thể Loại</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-muted">Game Bắn Súng Hướng Dẫn</a></li>
+                    <li><a href="#" class="text-muted">Game Bắn Súng</a></li>
                     <li><a href="#" class="text-muted">Game Trí Tuệ</a></li>
                     <li><a href="#" class="text-muted">Game Đối Kháng</a></li>
-                    <li><a href="#" class="text-muted">Review Game TLBB Khi</a></li>
-                    <li><a href="#" class="text-muted">Hình ảnh game</a></li>
                 </ul>
-            </div>
+            </div>-->
 
             <!-- Contact Info Section -->
             <div class="col-md-3">

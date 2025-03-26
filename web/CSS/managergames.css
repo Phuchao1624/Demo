@@ -1,318 +1,157 @@
-/* manageGames.css */
+/* managergames.css */
 
 /* General Body Styling */
 body {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #e0e0e0;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /* Đảm bảo body chiếm toàn bộ chiều cao viewport */
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); /* Dark gradient background */
+    color: #e0e0e0; /* Light gray text for contrast */
+    font-family: 'Poppins', sans-serif; /* Fallback font */
 }
 
-/* Container Styling */
+/* Container Styling for Main Content */
 .container {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    flex: 1; /* Đảm bảo container chiếm không gian còn lại */
+    padding-top: 80px; /* Ensure content is not hidden under the fixed navbar */
 }
 
-/* Heading Styling */
+/* Title Styling */
 h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: #00eaff;
-    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-    animation: glow 2s ease-in-out infinite alternate;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font for the title */
+    color: #00FFFF; /* Neon cyan for the title */
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; /* Glowing effect */
+    margin-bottom: 30px;
 }
 
-h4 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffca28;
-    text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Glow Animation for Headings */
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
-    }
-    to {
-        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
-    }
-}
-
-/* Form Container Styling */
-form.border {
-    background: rgba(40, 40, 70, 0.95);
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-form.border:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.4);
-}
-
-/* Form Labels */
-.form-label {
-    font-family: 'Orbitron', sans-serif;
-    color: #00eaff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
-}
-
-/* Form Inputs */
-.form-control {
-    background: rgba(20, 20, 40, 0.85);
-    border: 1px solid #00eaff;
-    color: #fff;
+/* Form Styling for Adding/Editing Games */
+.border.rounded {
+    background: #2a2a4a; /* Slightly lighter dark background for forms */
+    border: 1px solid #00FFFF; /* Neon cyan border */
     border-radius: 10px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); /* Subtle glow */
+}
+
+.border.rounded .form-label {
+    color: #00FFFF; /* Neon cyan for form labels */
+}
+
+.border.rounded .form-control {
+    background: #1a1a2e; /* Dark input background */
+    border: 1px solid #00FFFF; /* Neon cyan border */
+    color: #e0e0e0; /* Light text */
     transition: all 0.3s ease;
 }
 
-.form-control:focus {
-    border-color: #ff00ff;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
-    background: rgba(20, 20, 40, 1);
-    color: #fff;
-    transform: scale(1.02);
-}
-
-/* Image Preview Styling */
-.img-thumbnail {
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    background: rgba(40, 40, 70, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.img-thumbnail:hover {
-    transform: scale(1.05);
-}
-
-/* Buttons */
-.btn-primary, .btn-success {
-    background: linear-gradient(90deg, #ff00ff, #00eaff);
-    border: none;
-    border-radius: 25px;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
-}
-
-.btn-primary:hover, .btn-success:hover {
-    background: linear-gradient(90deg, #00eaff, #ff00ff);
-    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
-    transform: translateY(-3px);
-}
-
-.btn-warning {
-    background: linear-gradient(90deg, #ffca28, #ff6200);
-    border: none;
-    border-radius: 10px;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 202, 40, 0.4);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-}
-
-.btn-warning:hover {
-    background: linear-gradient(90deg, #ff6200, #ffca28);
-    box-shadow: 0 6px 20px rgba(255, 98, 0, 0.6);
-    transform: translateY(-2px);
-}
-
-.btn-danger {
-    background: linear-gradient(90deg, #ff3366, #ff99cc);
-    border: none;
-    border-radius: 10px;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-}
-
-.btn-danger:hover {
-    background: linear-gradient(90deg, #ff99cc, #ff3366);
-    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: linear-gradient(90deg, #666699, #9999cc);
-    border: none;
-    border-radius: 25px;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 102, 153, 0.4);
-}
-
-.btn-secondary:hover {
-    background: linear-gradient(90deg, #9999cc, #666699);
-    box-shadow: 0 6px 20px rgba(102, 102, 153, 0.6);
-    transform: translateY(-3px);
-}
-
-/* Table Responsive Container */
-.table-responsive {
-    overflow-x: auto; /* Cuộn ngang */
-    overflow-y: auto; /* Cuộn dọc */
-    max-height: 400px; /* Giới hạn chiều cao tối đa của bảng */
-    -webkit-overflow-scrolling: touch; /* Cuộn mượt trên thiết bị cảm ứng */
+.border.rounded .form-control:focus {
+    box-shadow: 0 0 10px #00FFFF; /* Glow on focus */
+    border-color: #00FFFF;
+    background: #2a2a4a; /* Slightly lighter background on focus */
 }
 
 /* Table Styling */
-.table {
-    background: rgba(40, 40, 70, 0.95);
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
-    min-width: 1000px; /* Đảm bảo bảng có chiều rộng tối thiểu */
-}
-
-.table-dark {
-    background: linear-gradient(90deg, #ff00ff, #00eaff);
-    color: #fff;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    position: sticky; /* Giữ header cố định khi cuộn */
-    top: 0;
-    z-index: 1;
-}
-
-.table-hover tbody tr {
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.table-hover tbody tr:hover {
-    background: rgba(0, 234, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.table td, .table th {
-    border-color: rgba(0, 255, 255, 0.2);
-    vertical-align: middle;
-    white-space: nowrap; /* Ngăn văn bản xuống dòng mặc định */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Thêm dấu ba chấm cho văn bản tràn */
-}
-
-/* Specific Column Widths */
-.table th:nth-child(1), .table td:nth-child(1) { /* ID */
-    width: 5%;
-    min-width: 50px;
-}
-
-.table th:nth-child(2), .table td:nth-child(2) { /* Tên game */
-    width: 15%;
-    min-width: 150px;
-    white-space: normal; /* Cho phép xuống dòng cho tên game */
-    word-wrap: break-word;
-}
-
-.table th:nth-child(3), .table td:nth-child(3) { /* Thể loại */
-    width: 10%;
-    min-width: 100px;
-}
-
-.table th:nth-child(4), .table td:nth-child(4) { /* Giá */
-    width: 10%;
-    min-width: 100px;
-}
-
-.table th:nth-child(5), .table td:nth-child(5) { /* Ngày phát hành */
-    width: 10%;
-    min-width: 120px;
-}
-
-.table th:nth-child(6), .table td:nth-child(6) { /* Nhà phát triển */
-    width: 15%;
-    min-width: 150px;
-    white-space: normal; /* Cho phép xuống dòng */
-    word-wrap: break-word;
-}
-
-.table th:nth-child(7), .table td:nth-child(7) { /* Nhà phát hành */
-    width: 15%;
-    min-width: 150px;
-    white-space: normal; /* Cho phép xuống dòng */
-    word-wrap: break-word;
-}
-
-.table th:nth-child(8), .table td:nth-child(8) { /* Nền tảng */
-    width: 10%;
-    min-width: 120px;
-    white-space: normal; /* Cho phép xuống dòng */
-    word-wrap: break-word;
-}
-
-.table th:nth-child(9), .table td:nth-child(9) { /* Tồn kho */
-    width: 5%;
-    min-width: 80px;
-}
-
-.table th:nth-child(10), .table td:nth-child(10) { /* Hành động */
-    width: 10%;
-    min-width: 120px;
-}
-
-/* Edit Form Styling */
-#editForm {
-    background: rgba(40, 40, 70, 0.95);
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#editForm:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.4);
-}
-
-/* Textarea Styling */
-textarea.form-control {
-    background: rgba(20, 20, 40, 0.85);
-    border: 1px solid #00eaff;
-    color: #fff;
+.table-responsive .table {
+    background: #2a2a4a; /* Dark background for the table */
     border-radius: 10px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    overflow: hidden; /* Ensure rounded corners apply to the table */
+    border: 1px solid #00FFFF; /* Neon cyan border */
+}
+
+.table-responsive .table thead {
+    background: #1a1a2e; /* Darker background for the header */
+    color: #00FFFF; /* Neon cyan text */
+    border-bottom: 2px solid #00FFFF; /* Neon cyan border */
+}
+
+.table-responsive .table th,
+.table-responsive .table td {
+    border: 1px solid #00FFFF; /* Neon cyan borders for cells */
+    vertical-align: middle; /* Center align content */
+}
+
+.table-responsive .table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.table-responsive .table tbody tr:hover {
+    background: #3a3a5a; /* Slightly lighter background on hover */
+}
+
+/* Button Styling */
+.border.rounded .btn-primary {
+    background: #00FFFF; /* Neon cyan background */
+    border: none;
+    color: #1a1a2e; /* Dark text for contrast */
+    box-shadow: 0 0 10px #00FFFF; /* Glow effect */
     transition: all 0.3s ease;
 }
 
-textarea.form-control:focus {
-    border-color: #ff00ff;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
-    background: rgba(20, 20, 40, 1);
-    color: #fff;
-    transform: scale(1.02);
+.border.rounded .btn-primary:hover {
+    background: #00CED1; /* Slightly darker cyan on hover */
+    box-shadow: 0 0 15px #00FFFF; /* Stronger glow on hover */
 }
 
-/* HR Styling */
-hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #00eaff, transparent);
-    margin: 2rem 0;
+.table-responsive .btn-warning {
+    background: #FF69B4; /* Pink for the "Sửa" (Edit) button */
+    border: none;
+    color: #1a1a2e;
+    box-shadow: 0 0 10px #FF69B4; /* Pink glow */
+    transition: all 0.3s ease;
+}
+
+.table-responsive .btn-warning:hover {
+    background: #FF85C1; /* Lighter pink on hover */
+    box-shadow: 0 0 15px #FF69B4; /* Stronger pink glow */
+}
+
+.table-responsive .btn-danger {
+    background: #FF4040; /* Red for the "Xóa" (Delete) button */
+    border: none;
+    color: #e0e0e0;
+    box-shadow: 0 0 10px #FF4040; /* Red glow */
+    transition: all 0.3s ease;
+}
+
+.table-responsive .btn-danger:hover {
+    background: #FF6666; /* Lighter red on hover */
+    box-shadow: 0 0 15px #FF4040; /* Stronger red glow */
+}
+
+#editForm .btn-success {
+    background: #00FF7F; /* Neon green for the "Cập Nhật" (Update) button */
+    border: none;
+    color: #1a1a2e;
+    box-shadow: 0 0 10px #00FF7F; /* Green glow */
+    transition: all 0.3s ease;
+}
+
+#editForm .btn-success:hover {
+    background: #66FFA6; /* Lighter green on hover */
+    box-shadow: 0 0 15px #00FF7F; /* Stronger green glow */
+}
+
+#editForm .btn-secondary {
+    background: #6c757d; /* Gray for the "Hủy" (Cancel) button */
+    border: none;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+#editForm .btn-secondary:hover {
+    background: #5a6268; /* Darker gray on hover */
+    box-shadow: 0 0 10px #6c757d; /* Subtle gray glow */
+}
+
+/* Image Preview Styling */
+.border.rounded .img-thumbnail {
+    border: 1px solid #00FFFF; /* Neon cyan border */
+    background: #1a1a2e; /* Dark background for the preview */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .table-responsive .table th,
+    .table-responsive .table td {
+        font-size: 0.9rem; /* Smaller text on mobile */
+    }
+
+    .table-responsive .btn-sm {
+        font-size: 0.8rem; /* Smaller buttons on mobile */
+    }
 }
