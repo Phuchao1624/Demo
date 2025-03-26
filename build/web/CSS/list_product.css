@@ -1,0 +1,253 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 21, 2025, 11:37:06 PM
+    Author     : PhucHao
+*/
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
+    }
+}
+
+.game-card {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.game-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+.card-text {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+}
+
+.card-text.price {
+    color: #ffca28;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
+    margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    position: relative; /* For tooltip positioning */
+}
+
+.btn-icon[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin-bottom: 5px;
+    z-index: 10;
+}
+
+.btn-icon[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin-bottom: -5px;
+}
+
+.btn-icon:hover[data-tooltip]::after,
+.btn-icon:hover[data-tooltip]::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-details {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.btn-details:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-add-to-cart {
+    background: linear-gradient(90deg, #ffca28, #ff6200);
+    box-shadow: 0 4px 15px rgba(255, 202, 40, 0.4);
+}
+
+.btn-add-to-cart:hover {
+    background: linear-gradient(90deg, #ff6200, #ffca28);
+    box-shadow: 0 6px 20px rgba(255, 98, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-add-to-wishlist {
+    background: linear-gradient(90deg, #ff3366, #ff99cc);
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+}
+
+.btn-add-to-wishlist:hover {
+    background: linear-gradient(90deg, #ff99cc, #ff3366);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-custom {
+    width: 100%;
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    border: none;
+    border-radius: 25px;
+    padding: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.btn-custom:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.no-games {
+    text-align: center;
+    padding: 50px 0;
+    color: #ff3333;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.no-games i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+/* Toast Notification Styling */
+.toast-container {
+    z-index: 1050;
+}
+
+.toast {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid #00eaff;
+    border-radius: 10px;
+    color: #00eaff;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+.toast-header {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.4);
+}
+
+.toast-body {
+    background: rgba(40, 40, 70, 0.95);
+    color: #e0e0e0;
+}

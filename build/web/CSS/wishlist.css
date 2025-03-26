@@ -1,0 +1,257 @@
+/* General Styles */
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Đảm bảo nội dung không bị che bởi navbar */
+    min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao viewport */
+    display: flex; /* Sử dụng flex để căn chỉnh */
+    flex-direction: column; /* Nội dung xếp theo cột */
+}
+
+.main-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex: 1; /* Mở rộng để lấp đầy không gian còn lại */
+}
+
+.container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Wishlist Title */
+.wishlist-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 234, 255, 0.5), 0 0 10px rgba(0, 234, 255, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(0, 234, 255, 0.6);
+    }
+}
+
+/* Game Card */
+.game-card {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.game-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.05);
+}
+
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #00eaff;
+    font-size: 1.3rem;
+    margin: 10px 0;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+    text-align: center;
+}
+
+.game-meta {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: #ffca28;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Game Actions */
+.game-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.btn-view-details, .btn-remove {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-view-details {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.btn-view-details:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-remove {
+    background: linear-gradient(90deg, #ff3333, #ff6666);
+    box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
+}
+
+.btn-remove:hover {
+    background: linear-gradient(90deg, #ff6666, #ff3333);
+    box-shadow: 0 6px 20px rgba(255, 51, 51, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Action Buttons Container (Thêm từ cart.css) */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 15px; /* Thêm padding để căn chỉnh */
+}
+
+/* Buttons (Thêm từ cart.css) */
+.btn-primary {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #00eaff, #ff00ff);
+    box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, #666699, #9999cc);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 102, 153, 0.4);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #9999cc, #666699);
+    box-shadow: 0 6px 20px rgba(102, 102, 153, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Alert for Empty Wishlist */
+.alert {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid #00eaff;
+    color: #00eaff;
+    border-radius: 10px;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+.toast-container {
+    z-index: 1050;
+}
+
+.toast {
+    background: rgba(40, 40, 70, 0.95);
+    border: 1px solid #00eaff;
+    border-radius: 10px;
+    color: #00eaff;
+    text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+.toast-header {
+    background: linear-gradient(90deg, #ff00ff, #00eaff);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.4);
+}
+
+.toast-body {
+    background: rgba(40, 40, 70, 0.95);
+    color: #e0e0e0;
+}
+
+/* Toast Styling for Remove Action */
+.toast-remove {
+    border: 1px solid #ff3333; /* Đổi viền thành màu đỏ */
+    color: #ff3333; /* Đổi màu chữ thành đỏ */
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.5); /* Hiệu ứng bóng chữ màu đỏ */
+}
+
+.toast-remove .toast-header {
+    background: linear-gradient(90deg, #ff3333, #ff6666); /* Gradient đỏ */
+    border-bottom: 1px solid rgba(255, 51, 51, 0.4); /* Viền dưới màu đỏ nhạt */
+}
+
+.toast-remove .toast-body {
+    background: rgba(40, 40, 70, 0.95);
+    color: #ff9999; /* Màu chữ nhạt hơn để dễ đọc */
+}
